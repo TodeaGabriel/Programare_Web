@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CV - Gabriel Todea</title>
+
+    </head>
+
+    <body>
+
+        <div class="cv">
+
+            <div class="sidebar">
+
+                <div class="profile">
+                    <img src="profile.jpg" alt="profile">
+                    <h2>Gabriel Todea</h2>
+                    <p>ID: 218893</p>
+                </div>
+
+                <div class="section">
+                    <h3>Contact</h3>
+                    <p>Str. Plopilor Nr.1</p>
+                    <p>Târgu Mureș</p>
+                    <p>gabriel@email.com</p>
+                    <p>+40 755 698 489</p>
+                </div>
+
+                <div class="section">
+                    <h3>Mother Tongue</h3>
+                    <p>Romanian</p>
+                </div>
+
+                <div class="section">
+                    <h3>Languages</h3>
+                    <p>English — C1</p>
+                    <p>German — A1</p>
+                </div>
+
+                <div class="section">
+                    <h3>Driving License</h3>
+                    <p>B</p>
+                </div>
+
+                </div>
+
+                <div class="main">
+
+                <div class="title">Education and Training</div>
+
+                <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="date">01/10/2023 – Present</div>
+                    <div class="job-title">Undergraduate UTCN</div>
+                    <div class="description">
+                        Field of study: Engineering, manufacturing and construction.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="date">2019 – 2023</div>
+                    <div class="job-title">Highschool Graduate</div>
+                    <div class="description">
+                        Colegiul Național "Alexandru Papiu Ilarian", Mathematics profile.
+                    </div>
+                </div>
+
+                </div>
+
+
+                <div class="title" style="margin-top:30px;">Projects</div>
+
+                <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="date">09/2019 – 10/2023</div>
+                    <div class="job-title">Web Monitoring & Maintenance</div>
+                    <div class="description">
+                        Oversaw website performance and implemented small-scale improvements.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="date">10/2023 – Present</div>
+                    <div class="job-title">Programming</div>
+                    <div class="description">
+                        Experience in C++, Java, Python, HTML and MySQL.  
+                        Created a courier company tracking system.
+                    </div>
+                </div>
+
+                </div>
+
+
+                <div class="title" style="margin-top:30px;">Skills</div>
+
+                <div class="skills">
+                    <div class="skill">Microsoft Office</div>
+                    <div class="skill">Word</div>
+                    <div class="skill">Excel</div>
+                    <div class="skill">HTML</div>
+                    <div class="skill">CSS</div>
+                    <div class="skill">Python</div>
+                    <div class="skill">C++</div>
+                    <div class="skill">Problem Solving</div>
+                    <div class="skill">Critical Thinking</div>
+                </div>
+
+
+                <div class="title" style="margin-top:30px;">Volunteering</div>
+
+                <div class="timeline">
+
+                    <div class="timeline-item">
+                        <div class="date">10/2023 – Present</div>
+                        <div class="job-title">HR Department Member</div>
+                        <div class="description">
+                            Actively involved in organizing academic events, campaigns and university initiatives.
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+
+    <style>
+
+        *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+        background:#f4f4f4;
+        display:flex;
+        justify-content:center;
+        padding:30px;
+        }
+
+        .cv{
+        width:1000px;
+        background:white;
+        display:grid;
+        grid-template-columns:300px 1fr;
+        box-shadow:0 0 15px rgba(0,0,0,0.1);
+        }
+
+        .sidebar{
+        background:#2f8f6b;
+        color:white;
+        padding:30px;
+        }
+
+        .profile{
+        text-align:center;
+        margin-bottom:30px;
+        }
+
+        .profile img{
+        width:120px;
+        height:120px;
+        border-radius:50%;
+        object-fit:cover;
+        margin-bottom:15px;
+        }
+
+        .profile h2{
+        font-size:22px;
+        }
+
+        .section{
+        margin-top:30px;
+        }
+
+        .section h3{
+        margin-bottom:10px;
+        border-bottom:1px solid rgba(255,255,255,0.5);
+        padding-bottom:5px;
+        font-size:16px;
+        }
+
+        .section p{
+        font-size:14px;
+        margin-bottom:6px;
+        }
+
+        .main{
+        padding:40px;
+        }
+
+        .title{
+        font-size:22px;
+        font-weight:bold;
+        margin-bottom:20px;
+        color:#333;
+        }
+
+        .timeline{
+        position:relative;
+        padding-left:25px;
+        border-left:2px solid #2f8f6b;
+        }
+
+        .timeline-item{
+        margin-bottom:25px;
+        position:relative;
+        }
+
+        .timeline-item::before{
+        content:"";
+        position:absolute;
+        left:-9px;
+        top:5px;
+        width:14px;
+        height:14px;
+        background:#2f8f6b;
+        border-radius:50%;
+        }
+
+        .date{
+        font-size:13px;
+        color:#666;
+        margin-bottom:5px;
+        }
+
+        .job-title{
+        font-weight:bold;
+        color:#222;
+        }
+
+        .description{
+        font-size:14px;
+        color:#444;
+        margin-top:5px;
+        }
+
+        .skills{
+        display:flex;
+        flex-wrap:wrap;
+        gap:10px;
+        margin-top:10px;
+        }
+
+        .skill{
+        background:#e6f3ee;
+        padding:6px 10px;
+        border-radius:4px;
+        font-size:13px;
+        }
+
+    </style>
+
+</html>
