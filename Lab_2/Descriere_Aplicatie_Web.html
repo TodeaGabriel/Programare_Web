@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="ro">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Proiect Comic-Gram</title>
+    </head>
+
+    <body>
+
+        <center>
+            <h1>Comic-Gram</h1> 
+            <h2>Social Media pentru fanii manga si bezni desenate</h2>
+            <p>O platforma dedicata comunitatii de <b>benzi desenate</b> și <strong>manga</strong> din întreaga lume.</p>
+        </center>
+
+        <hr>
+
+        <div align="center">
+            <h2>Funcționalități Principale</h2>
+            <ul type="square" align="left" style="display: inline-block;">
+                <li>Recenzii de la utilizatori</li>
+                <li>Grupuri de discuții pe serii (ex: One Piece, Batman)</li>
+                <li>Sistem de tracking pentru colecții</li>
+            </ul>
+        </div>
+
+        <table border="1" width="80%" align="center" cellpadding="10">
+            <tr bgcolor="#cccccc">
+                <th colspan="2">Statistici Comunitate (Proiectat)</th>
+            </tr>
+            <tr>
+                <td valign="top">Utilizatori estimați:</td>
+                <td align="right">10,000+</td>
+            </tr>
+            <tr>
+                <td valign="middle">Titluri în bază de date:</td>
+                <td align="right">5,000+</td>
+            </tr>
+        </table>
+
+        <br>
+
+        <div style="text-align: center;">
+            <h3>Exemplu de Copertă (Imagine de prezentare)</h3>
+            <img src="https://upload.wikimedia.org/wikipedia/en/7/7f/Manga_Entertainment.svg" alt="Logo ComicSphere" width="150" height="150" title="Logo-ul aplicației noastre">
+            <br>
+            <span>Vizitați partenerul nostru: </span>
+            <a href="https://github.com/TodeaGabriel" target="_blank" name="link_extern">Todea Gabriel</a>
+        </div>
+
+        <hr>
+
+        <fieldset>
+            <legend>Alătură-te Clubului (Demo Formular)</legend>
+            <form action="#" method="post">
+                <p>
+                    Nume utilizator: 
+                    <input type="text" name="username" size="20" maxlength="15" value="CititorAnonim">
+                </p>
+
+                <p>
+                    Gen preferat:
+                    <select name="genuri" multiple size="1">
+                        <option value="shonen" selected>Shonen</option>
+                        <option value="seinen">Seinen</option>
+                        <option value="comics">DC/Marvel</option>
+                        <option value="indie">Indie</option>
+                    </select>
+                </p>
+
+                <p>
+                    Câte volume citești pe lună? 
+                    <input type="number" name="volum" step="1" min="1" max="100" value="5">
+                </p>
+
+                <p>
+                    Ești autor? 
+                    <input type="checkbox" name="author" checked disabled> 
+                    <small>(Funcție momentan indisponibilă - Readonly)</small>
+                    <input type="hidden" name="status" value="activ" readonly>
+                </p>
+
+                <p>Descrie pasiunea ta:</p>
+                <textarea name="descriere" rows="5" cols="40">Ador benzile desenate pentru că...</textarea>
+                
+                <br><br>
+                <input type="submit" value="Trimite Înscrierea">
+            </form>
+        </fieldset>
+
+        <br>
+
+        <h4>Top 3 Serii Recomandate</h4>
+        <ol start="1">
+            <li>Berserk</li>
+            <li>Watchmen</li>
+            <li>Sandman</li>
+        </ol>
+
+        <h5>Notă Subsol</h5>
+        <h6>Creat pentru laboratorul de Tehnologii Web.</h6>
+
+    </body>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: src = "berserk.jpg";
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #555;
+        }
+
+        p {
+            color: #666;
+        }
+
+        input {
+            border: 1px solid #ccc;
+            padding: 5px;
+            width: 150px;
+        }
+        
+    </style>
+
+</html>
