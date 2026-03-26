@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Catalog Filme</title>
+</head>
+<body>
+
+    <header id="top">
+        <h1>Movie Watch List</h1>
+        <h2>Gestionați-vă colecția personală de filme</h2>
+        
+        <p>Folosiți acest <strong>catalog</strong> pentru a <b>organiza</b> filmele preferate. <em>Toate datele sunt salvate local.</em></p>
+        
+        <img src="https://via.placeholder.com/150" alt="Logo Catalog Filme" width="150" height="150" title="Logo-ul aplicației noastre">
+        
+        <div style="height: 50px; background-color: #f0f0f0; padding: 10px;">
+            <span>Versiune aplicație: 1.0.4 - Status: Activă</span>
+        </div>
+    </header>
+
+    <hr>
+
+    <section id="formular-film">
+        <fieldset>
+            <legend>Adăugare Film Nou</legend>
+            <form>
+                <p>
+                    Titlu film: 
+                    <input type="text" name="titlu_film" maxlength="50" size="30" value="Ex: Inception" placeholder="Introduceți titlul...">
+                </p>
+                
+                <p>
+                    Anul apariției: 
+                    <input type="number" name="an_film" min="1900" max="2026" step="1" value="2024">
+                </p>
+                
+                <p>
+                    Genul filmului:<br>
+                    <select name="genuri" multiple size="5">
+                        <option value="actiune" selected>Acțiune</option>
+                        <option value="aventura">Aventură</option>
+                        <option value="comedie">Comedie</option>
+                        <option value="drama">Dramă</option>
+                        <option value="thriller">Thriller</option>
+                        <option value="horror">Horror</option>
+                        <option value="sf">SF</option>
+                        <option value="romantic">Romantic</option>
+                        <option value="psihologic">Psihologic</option>
+                        <option value="documentar">Documentar</option>
+                        <option value="animatie">Animație</option>
+                    </select>
+                </p>
+                
+                <p>
+                    Status vizionare:<br>
+                    <input type="checkbox" name="status" value="vizionat" checked> Vizionat<br>
+                    <input type="checkbox" name="status" value="favorit"> Favorit<br>
+                    <input type="checkbox" name="status" value="indisponibil" disabled> Indisponibil (momentan)
+                </p>
+                
+                <p>
+                    Format:<br>
+                    <input type="radio" name="format" value="dvd"> DVD
+                    <input type="radio" name="format" value="bluray"> Blu-ray
+                </p>
+                
+                <p>
+                    Recenzie scurtă:<br>
+                    <textarea name="recenzie" readonly cols="40" rows="4">Acest text este doar pentru citire (Read-Only).</textarea>
+                </p>
+                
+                <input type="submit" value="Salvează Filmul">
+                <input type="reset" value="Resetează Formularul">
+            </form>
+        </fieldset>
+    </section>
+
+    <br><hr><br>
+
+    <section>
+        <table border="1" width="100%" bgcolor="#f9f9f9" align="center" valign="middle">
+            <tr bgcolor="#cccccc">
+                <th>Titlu</th>
+                <th>Regizor</th>
+                <th>An</th>
+                <th>Rating</th>
+            </tr>
+            <tr>
+                <td>The Dark Knight</td>
+                <td rowspan="2">Christopher Nolan</td>
+                <td>2008</td>
+                <td>9.0</td>
+            </tr>
+            <tr>
+                <td>Interstellar</td>
+                <td>2014</td>
+                <td>8.7</td>
+            </tr>
+            <tr>
+                <td>Pulp Fiction</td>
+                <td>Quentin Tarantino</td>
+                <td>1994</td>
+                <td>8.9</td>
+            </tr>
+            <tr>
+                <td>Parasite</td>
+                <td>Bong Joon-ho</td>
+                <td>2019</td>
+                <td>8.5</td>
+            </tr>
+            <tr>
+                <td colspan="4" align="center">Total filme în catalog: 4</td>
+            </tr>
+        </table>
+    </section>
+
+    <br><hr><br>
+
+    <section>
+        <center>
+            <h3>Instrucțiuni și Resurse</h3>
+            
+            <ol start="1" type="I">
+                <li>Introduceți detaliile în formularul de mai sus.</li>
+                <li>Selectați genul și formatul corespunzător.</li>
+                <li>Apăsați butonul de "Salvează" pentru a actualiza tabelul.</li>
+            </ol>
+            
+            <h4>Genuri disponibile:</h4>
+            <ul>
+                <li>Acțiune și Aventură</li>
+                <li>Documentare</li>
+                <li>Animație</li>
+            </ul>
+            
+            <p>
+                Link-uri utile: 
+                <a href="https://www.imdb.com" name="imdb_link" target="_blank">IMDb</a> | 
+                <a href="https://www.rottentomatoes.com" name="rt_link" target="_blank">Rotten Tomatoes</a>
+            </p>
+            
+            <p>
+                <a href="#top">Mergi la începutul paginii</a> | 
+                <a href="#formular-film">Sari la formularul de adăugare</a>
+            </p>
+        </center>
+    </section>
+
+</body>
+</html>
+
+
+
+<script>
+
+    var numeCinema = "Cinema City";
+    let nrFilme = 120;
+    const pretBilet = 35.5;
+
+    alert("Bine ați venit la " + numeCinema);
+    console.log("Număr total de filme în catalog: " + nrFilme);
+    document.write("Prețul standard al unui bilet este: " + pretBilet + " RON<br>");
+
+    function calculeazaCostBilete(pretBilet, nrPersoane) {
+        if (nrPersoane > 5) {
+            return pretBilet * nrPersoane * 0.8;
+        }
+        return pretBilet * nrPersoane;
+    }
+
+    var calculeazaRatingMediu = function(rating1, rating2, rating3) {
+        var suma = rating1 + rating2 + rating3;
+        return (suma / 3).toFixed(1);
+    };
+
+    const formateazaInfo = (titlu, an, rating) => {
+        return titlu + " (" + an + ") - Rating: " + rating + "/10";
+    };
+
+    let costGrup = calculeazaCostBilete(35.5, 7);
+    console.log("Cost grup (7 pers): " + costGrup);
+
+    let costNormal = calculeazaCostBilete(35.5, 3);
+    console.log("Cost normal (3 pers): " + costNormal);
+
+    let ratingMediu = calculeazaRatingMediu(8.5, 7.2, 9.0);
+
+    let info = formateazaInfo("Inception", 2010, ratingMediu);
+    document.write("<p>" + info + "</p>");
+
+    let filme = [
+        { titlu: "Inception", regizor: "Christopher Nolan", an: 2010, rating: 8.8, gen: "SF", vizionat: true },
+        { titlu: "The Matrix", regizor: "Lana Wachowski", an: 1999, rating: 8.7, gen: "SF", vizionat: true },
+        { titlu: "The Godfather", regizor: "Francis Ford Coppola", an: 1972, rating: 9.2, gen: "Dramă", vizionat: false },
+        { titlu: "Gladiator", regizor: "Ridley Scott", an: 2000, rating: 8.5, gen: "Acțiune", vizionat: true },
+        { titlu: "Home Alone", regizor: "Chris Columbus", an: 1990, rating: 7.6, gen: "Comedie", vizionat: false },
+        { titlu: "The Shining", regizor: "Stanley Kubrick", an: 1980, rating: 8.4, gen: "Horror", vizionat: true }
+    ];
+
+    console.log("--- Filme cu rating > 8.0 ---");
+    filme.forEach(f => { if(f.rating > 8.0) console.log(f.titlu); });
+
+    let infoFilme = filme.map(f => `${f.titlu} (${f.an}) - ${f.rating}/10`);
+
+    let nevizionate = filme.filter(f => f.vizionat === false);
+
+    let sumaRating = filme.reduce((acc, f) => acc + f.rating, 0);
+    let mediaRating = sumaRating / filme.length;
+
+    var cinema = {
+        nume: "Cinema Paradiso",
+        oras: "București",
+        filme: filme,
+        afiseazaCatalog: function() {
+            this.filme.forEach(f => console.log(`${f.titlu} regizat de ${f.regizor}`));
+        },
+        calculeazaRatingMediu: function() {
+            let total = this.filme.reduce((acc, f) => acc + f.rating, 0);
+            return (total / this.filme.length).toFixed(2);
+        },
+        cautaFilm: function(titluFilm) {
+            return this.filme.find(f => f.titlu.toLowerCase() === titluFilm.toLowerCase());
+        },
+        filtreazaDupaGen: function(gen) {
+            return this.filme.filter(f => f.gen.toLowerCase() === gen.toLowerCase());
+        }
+    };
+
+    console.log("Media rating cinema:", cinema.calculeazaRatingMediu());
+    console.log("Căutare 'Inception':", cinema.cautaFilm("Inception"));
+    console.log("Căutare 'Avatar' (invalid):", cinema.cautaFilm("Avatar"));
+
+    const form = document.getElementById('filmForm');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const titlu = form.elements['titlu_film'].value;
+        const an = parseInt(form.elements['an_film'].value);
+        const genuri = form.elements['genuri'].selectedOptions;
+
+        if (titlu.trim() === "") {
+            alert("Eroare: Titlul nu poate fi gol!");
+            return;
+        }
+        if (an < 1900 || an > 2026) {
+            alert("Eroare: Anul trebuie să fie între 1900 și 2026!");
+            return;
+        }
+        if (genuri.length === 0) {
+            alert("Eroare: Selectați cel puțin un gen!");
+            return;
+        }
+
+        let filmNou = {
+            titlu: titlu,
+            regizor: "Necunoscut",
+            an: an,
+            rating: 0
+        };
+
+        filme.push(filmNou);
+
+        let tabel = document.getElementById("tabelFilme");
+        let tr = document.createElement("tr");
+
+        let td1 = document.createElement("td");
+        td1.innerText = filmNou.titlu;
+        tr.appendChild(td1);
+
+        let td2 = document.createElement("td");
+        td2.innerText = filmNou.regizor;
+        tr.appendChild(td2);
+
+        let td3 = document.createElement("td");
+        td3.innerText = filmNou.an;
+        tr.appendChild(td3);
+
+        let td4 = document.createElement("td");
+        td4.innerText = filmNou.rating;
+        tr.appendChild(td4);
+
+        tabel.insertBefore(tr, tabel.lastElementChild);
+
+        let totalCell = tabel.querySelector('td[colspan="4"]');
+        if (totalCell) {
+            totalCell.innerText = "Total filme în catalog: " + (filme.length);
+        }
+
+        alert("Film adăugat cu succes!");
+        form.reset();
+    });
+
+</script>
