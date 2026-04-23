@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html style="background-color: <%= tema === 'dark' ? '#333' : '#FFF' %>; color: <%= tema === 'dark' ? '#FFF' : '#000' %>;">
+<head><title>Biblioteca Ta</title></head>
+<body>
+    <h1>Salut, <%= user.email %>! Bine ai venit în Clubul ComicSphere!</h1>
+    
+    <hr>
+
+    <h2>Colecția noastră de Benzi Desenate</h2>
+    <ul>
+        <% listaComics.forEach(function(comic) { %>
+            <li>
+                <strong><%= comic.titlu %></strong> de <%= comic.autor %> (<%= comic.gen %>)
+                - <a href="/biblioteca/detalii/<%= comic.id %>" style="color: coral;">Vezi detalii</a>
+            </li>
+        <% }); %>
+    </ul>
+
+    <hr>
+
+    <p><i>Ai accesat această pagină de <b><%= vizite %></b> ori în această sesiune.</i></p>
+
+    <p><a href="/logout"><button>Deconectare</button></a></p>
+
+</body>
+</html>
