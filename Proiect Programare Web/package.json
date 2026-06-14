@@ -1,0 +1,23 @@
+{
+  "name": "proiect-programare-web",
+  "version": "1.0.0",
+  "description": "Proiect de programare web - Website de bilete pentru evenimente",
+  "license": "ISC",
+  "author": "Todea Gabriel",
+  "type": "module",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TodeaGabriel/Programare_Web"
+  },
+  "scripts": {
+    "start": "node db/index.js",
+    "dev": "nodemon db/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.7.0",
+    "nodemon": "^3.1.14"
+  }
+}
