@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Evenimente</title>
+</head>
+<body>
+
+<h1>Evenimente disponibile</h1>
+
+<a href="/dashboard">Înapoi la dashboard</a>
+
+<br><br>
+
+<form action="/dashboard/events" method="GET">
+    <input
+        type="text"
+        name="search"
+        placeholder="Caută după titlu sau artist"
+        value="<%= search %>"
+    >
+
+    <button type="submit">
+        Caută
+    </button>
+</form>
+
+<br>
+
+<% if (role === "admin") { %>
+    <a href="/dashboard/events/new">Adaugă eveniment nou</a>
+<% } %>
+
+<hr>
+
+<% if (events.length === 0) { %>
+
+    <p>Nu există evenimente momentan.</p>
+
+<% } else { %>
+
+    <% events.forEach(event => { %>
+
+        <div>
+            <h2><%= event.title %></h2>
+
+            <p>
+                Artist:
+                <%= event.artist %>
+            </p>
+
+            <p>
+                Locație:
+                <% if (event.venue) { %>
+                    <%= event.venue.name %>
+                <% } else { %>
+                    Locație necunoscută
+                <% } %>
+            </p>
+
+            <p>
+                Data:
+                <%= event.date.toLocaleDateString("ro-RO") %>
+            </p>
+
+            <p>
+                Preț:
+                <%= event.ticketPrice %> RON
+            </p>
+
+            <p>
+                Bilete disponibile:
+                <%= event.availableTickets %>
+            </p>
+
+            <a href="/dashboard/events/<%= event._id %>">
+                Vezi detalii
+            </a>
+        </div>
+
+        <hr>
+
+    <% }) %>
+
+<% } %>
+
+</body>
+</html>

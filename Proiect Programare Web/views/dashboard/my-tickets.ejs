@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Biletele mele</title>
+</head>
+<body>
+
+<h1>Biletele mele</h1>
+
+<a href="/dashboard">Înapoi la dashboard</a>
+
+<hr>
+
+<% if (tickets.length === 0) { %>
+
+    <p>Nu ai cumpărat niciun bilet.</p>
+
+<% } else { %>
+
+    <% tickets.forEach(ticket => { %>
+
+        <div>
+            <h2><%= ticket.event.title %></h2>
+
+            <p>
+                Artist:
+                <%= ticket.event.artist %>
+            </p>
+
+            <p>
+                Data:
+                <%= ticket.event.date.toLocaleDateString("ro-RO") %>
+            </p>
+
+            <p>
+                Locație:
+                <% if (ticket.event.venue) { %>
+                    <%= ticket.event.venue.name %>
+                <% } else { %>
+                    Locație necunoscută
+                <% } %>
+            </p>
+
+            <p>
+                Cumpărat la:
+                <%= ticket.purchaseDate.toLocaleDateString("ro-RO") %>
+            </p>
+        </div>
+
+        <hr>
+
+    <% }) %>
+
+<% } %>
+
+</body>
+</html>

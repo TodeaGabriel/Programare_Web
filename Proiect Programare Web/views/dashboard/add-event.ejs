@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adaugă eveniment</title>
+</head>
+<body>
+
+<h1>Adaugă eveniment</h1>
+
+<% if (venues.length === 0) { %>
+
+    <p>Nu există locații. Adaugă mai întâi o locație.</p>
+
+    <a href="/dashboard/venues/new">
+        Adaugă locație
+    </a>
+
+<% } else { %>
+
+    <form action="/dashboard/events" method="POST">
+
+        <label>Titlu eveniment</label>
+        <br>
+        <input
+            type="text"
+            name="title"
+            placeholder="Concert Coldplay"
+            required
+        >
+
+        <br><br>
+
+        <label>Artist</label>
+        <br>
+        <input
+            type="text"
+            name="artist"
+            placeholder="Coldplay"
+            required
+        >
+
+        <br><br>
+
+        <label>Descriere</label>
+        <br>
+        <textarea
+            name="description"
+            placeholder="Descriere eveniment"
+            required
+        ></textarea>
+
+        <br><br>
+
+        <label>Dată</label>
+        <br>
+        <input
+            type="date"
+            name="date"
+            required
+        >
+
+        <br><br>
+
+        <label>Locație</label>
+        <br>
+        <select name="venue" required>
+            <% venues.forEach(venue => { %>
+                <option value="<%= venue._id %>">
+                    <%= venue.name %> - <%= venue.location %>
+                </option>
+            <% }) %>
+        </select>
+
+        <br><br>
+
+        <label>Număr total bilete</label>
+        <br>
+        <input
+            type="number"
+            name="totalTickets"
+            placeholder="1000"
+            required
+        >
+
+        <br><br>
+
+        <label>Preț bilet</label>
+        <br>
+        <input
+            type="number"
+            name="ticketPrice"
+            placeholder="250"
+            required
+        >
+
+        <br><br>
+
+        <label>Imagine URL</label>
+        <br>
+        <input
+            type="text"
+            name="imageUrl"
+            placeholder="https://..."
+        >
+
+        <br><br>
+
+        <button type="submit">
+            Salvează eveniment
+        </button>
+
+    </form>
+
+<% } %>
+
+<br>
+
+<a href="/dashboard">Înapoi la dashboard</a>
+
+</body>
+</html>

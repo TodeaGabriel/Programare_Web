@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+
+<h1>Bun venit, <%= username %>!</h1>
+
+<p>Rol: <%= role %></p>
+
+<ul>
+    <li>
+        <a href="/dashboard/events">Caută evenimente</a>
+    </li>
+
+    <li>
+        <a href="/dashboard/my-tickets">Biletele mele</a>
+    </li>
+
+    <% if (role === "admin") { %>
+        <li>
+            <a href="/dashboard/events/new">Adaugă eveniment</a>
+        </li>
+
+        <li>
+            <a href="/dashboard/venues/new">Adaugă locație</a>
+        </li>
+    <% } %>
+
+    <li>
+        <a href="/logout">Logout</a>
+    </li>
+</ul>
+
+</body>
+</html>

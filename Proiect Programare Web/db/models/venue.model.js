@@ -1,7 +1,7 @@
-import mongooose from 'mongoose';
+import mongoose from "mongoose";
 
-const venueSchema = new mongooose.Schema({
-    
+const venueSchema = new mongoose.Schema(
+    {
         name: {
             type: String,
             required: true,
@@ -15,7 +15,7 @@ const venueSchema = new mongooose.Schema({
             type: String,
             required: true,
             trim: true,
-            minlength: 10,
+            minlength: 3,
             maxlength: 200
         },
 
@@ -23,8 +23,11 @@ const venueSchema = new mongooose.Schema({
             type: Number,
             required: true,
             min: 100
-        },
+        }
+    },
+    {
+        timestamps: true
     }
 );
 
-export const Venue = mongooose.model("Venue", venueSchema);
+export const Venue = mongoose.model("Venue", venueSchema);

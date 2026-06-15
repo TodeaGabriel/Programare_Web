@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
-const ticketSchema = new mongoose.Schema({
+const ticketSchema = new mongoose.Schema(
+    {
         owner: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
@@ -16,9 +17,10 @@ const ticketSchema = new mongoose.Schema({
         purchaseDate: {
             type: Date,
             default: Date.now
-        },
-
-        qrCode: String
+        }
+    },
+    {
+        timestamps: true
     }
 );
 

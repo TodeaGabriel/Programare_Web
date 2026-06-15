@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= event.title %></title>
+</head>
+<body>
+
+<a href="/dashboard/events">Înapoi la evenimente</a>
+
+<h1><%= event.title %></h1>
+
+<p>
+    Artist:
+    <%= event.artist %>
+</p>
+
+<p>
+    Descriere:
+    <%= event.description %>
+</p>
+
+<p>
+    Data:
+    <%= event.date.toLocaleDateString("ro-RO") %>
+</p>
+
+<p>
+    Locație:
+    <% if (event.venue) { %>
+        <%= event.venue.name %>,
+        <%= event.venue.location %>
+    <% } else { %>
+        Locație necunoscută
+    <% } %>
+</p>
+
+<p>
+    Preț:
+    <%= event.ticketPrice %> RON
+</p>
+
+<p>
+    Bilete disponibile:
+    <%= event.availableTickets %>
+</p>
+
+<% if (event.availableTickets > 0) { %>
+
+    <form action="/dashboard/events/<%= event._id %>/buy" method="POST">
+        <button type="submit">
+            Cumpără bilet
+        </button>
+    </form>
+
+<% } else { %>
+
+    <p>Nu mai sunt bilete disponibile.</p>
+
+<% } %>
+
+</body>
+</html>

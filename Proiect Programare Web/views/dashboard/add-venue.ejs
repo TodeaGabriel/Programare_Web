@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adaugă locație</title>
+</head>
+<body>
+
+<h1>Adaugă locație</h1>
+
+<form action="/dashboard/venues" method="POST">
+
+    <label>Nume locație</label>
+    <br>
+    <input
+        type="text"
+        name="name"
+        placeholder="BT Arena"
+        required
+    >
+
+    <br><br>
+
+    <label>Adresă / oraș</label>
+    <br>
+    <input
+        type="text"
+        name="location"
+        placeholder="Cluj-Napoca"
+        required
+    >
+
+    <br><br>
+
+    <label>Capacitate</label>
+    <br>
+    <input
+        type="number"
+        name="capacity"
+        placeholder="10000"
+        required
+    >
+
+    <br><br>
+
+    <button type="submit">
+        Salvează locația
+    </button>
+
+</form>
+
+<br>
+
+<a href="/dashboard">Înapoi la dashboard</a>
+
+</body>
+</html>
