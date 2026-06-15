@@ -2,60 +2,122 @@
 <html>
 <head>
     <title><%= event.title %></title>
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet/dist/leaflet.css"
+    >
 </head>
 <body>
 
-<a href="/dashboard/events">Înapoi la evenimente</a>
+<nav class="navbar">
+    <div class="navbar-title">Event Tickets</div>
 
-<h1><%= event.title %></h1>
+    <div class="navbar-links">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/dashboard/events">Evenimente</a>
+        <a href="/dashboard/my-tickets">Biletele mele</a>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
 
-<p>
-    Artist:
-    <%= event.artist %>
-</p>
+<div class="page">
 
-<p>
-    Descriere:
-    <%= event.description %>
-</p>
+    <a class="btn btn-secondary" href="/dashboard/events">
+        Înapoi la evenimente
+    </a>
 
-<p>
-    Data:
-    <%= event.date.toLocaleDateString("ro-RO") %>
-</p>
+    <div class="details-layout">
 
-<p>
-    Locație:
-    <% if (event.venue) { %>
-        <%= event.venue.name %>,
-        <%= event.venue.location %>
-    <% } else { %>
-        Locație necunoscută
-    <% } %>
-</p>
+        <div class="card detail-box">
+            <span class="badge">Eveniment live</span>
 
-<p>
-    Preț:
-    <%= event.ticketPrice %> RON
-</p>
+            <h1><%= event.title %></h1>
 
-<p>
-    Bilete disponibile:
-    <%= event.availableTickets %>
-</p>
+            <br>
 
-<% if (event.availableTickets > 0) { %>
+            <p>
+                <strong>Artist:</strong>
+                <%= event.artist %>
+            </p>
 
-    <form action="/dashboard/events/<%= event._id %>/buy" method="POST">
-        <button type="submit">
-            Cumpără bilet
-        </button>
-    </form>
+            <p>
+                <strong>Descriere:</strong>
+                <%= event.description %>
+            </p>
 
-<% } else { %>
+            <p>
+                <strong>Data:</strong>
+                <%= event.date.toLocaleDateString("ro-RO") %>
+            </p>
 
-    <p>Nu mai sunt bilete disponibile.</p>
+            <p>
+                <strong>Locație:</strong>
+                <% if (event.venue) { %>
+                    <%= event.venue.name %>, <%= event.venue.location %>
+                <% } else { %>
+                    Locație necunoscută
+                <% } %>
+            </p>
 
+            <p>
+                <strong>Preț:</strong>
+                <%= event.ticketPrice %> RON
+            </p>
+
+            <p>
+                <strong>Bilete disponibile:</strong>
+                <%= event.availableTickets %>
+            </p>
+
+            <% if (event.availableTickets > 0) { %>
+                <form action="/dashboard/events/<%= event._id %>/buy" method="POST">
+                    <button class="btn btn-primary" type="submit">
+                        Cumpără bilet
+                    </button>
+                </form>
+            <% } else { %>
+                <p>Nu mai sunt bilete disponibile.</p>
+            <% } %>
+        </div>
+
+        <div class="card">
+            <h2>Locația evenimentului</h2>
+
+            <% if (event.venue && event.venue.latitude && event.venue.longitude) { %>
+                <div id="map"></div>
+            <% } else { %>
+                <p class="empty-message">
+                    Nu există coordonate pentru această locație.
+                </p>
+            <% } %>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<% if (event.venue && event.venue.latitude && event.venue.longitude) { %>
+    <script>
+        const latitude = <%= event.venue.latitude %>;
+        const longitude = <%= event.venue.longitude %>;
+
+        const map = L.map("map").setView([latitude, longitude], 15);
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 19,
+            attribution: "© OpenStreetMap"
+        }).addTo(map);
+
+        L.marker([latitude, longitude])
+            .addTo(map)
+            .bindPopup("<%= event.venue.name %><br><%= event.venue.location %>")
+            .openPopup();
+    </script>
 <% } %>
 
 </body>

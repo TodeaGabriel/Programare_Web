@@ -2,56 +2,69 @@
 <html>
 <head>
     <title>Biletele mele</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
-<h1>Biletele mele</h1>
+<nav class="navbar">
+    <div class="navbar-title">Event Tickets</div>
 
-<a href="/dashboard">Înapoi la dashboard</a>
+    <div class="navbar-links">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/dashboard/events">Evenimente</a>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
 
-<hr>
+<div class="page">
+    <div class="card">
+        <h1>Biletele mele</h1>
+    </div>
 
-<% if (tickets.length === 0) { %>
+    <br>
 
-    <p>Nu ai cumpărat niciun bilet.</p>
+    <% if (tickets.length === 0) { %>
 
-<% } else { %>
-
-    <% tickets.forEach(ticket => { %>
-
-        <div>
-            <h2><%= ticket.event.title %></h2>
-
-            <p>
-                Artist:
-                <%= ticket.event.artist %>
-            </p>
-
-            <p>
-                Data:
-                <%= ticket.event.date.toLocaleDateString("ro-RO") %>
-            </p>
-
-            <p>
-                Locație:
-                <% if (ticket.event.venue) { %>
-                    <%= ticket.event.venue.name %>
-                <% } else { %>
-                    Locație necunoscută
-                <% } %>
-            </p>
-
-            <p>
-                Cumpărat la:
-                <%= ticket.purchaseDate.toLocaleDateString("ro-RO") %>
-            </p>
+        <div class="empty-message">
+            Nu ai cumpărat niciun bilet.
         </div>
 
-        <hr>
+    <% } else { %>
 
-    <% }) %>
+        <% tickets.forEach(ticket => { %>
 
-<% } %>
+            <div class="ticket-card">
+                <h2><%= ticket.event.title %></h2>
+
+                <p>
+                    <strong>Artist:</strong>
+                    <%= ticket.event.artist %>
+                </p>
+
+                <p>
+                    <strong>Data:</strong>
+                    <%= ticket.event.date.toLocaleDateString("ro-RO") %>
+                </p>
+
+                <p>
+                    <strong>Locație:</strong>
+                    <% if (ticket.event.venue) { %>
+                        <%= ticket.event.venue.name %>
+                    <% } else { %>
+                        Locație necunoscută
+                    <% } %>
+                </p>
+
+                <p>
+                    <strong>Cumpărat la:</strong>
+                    <%= ticket.purchaseDate.toLocaleDateString("ro-RO") %>
+                </p>
+            </div>
+
+        <% }) %>
+
+    <% } %>
+</div>
 
 </body>
 </html>

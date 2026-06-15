@@ -2,36 +2,60 @@
 <html>
 <head>
     <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
-<h1>Bun venit, <%= username %>!</h1>
+<nav class="navbar">
+    <div class="navbar-title">Event Tickets</div>
 
-<p>Rol: <%= role %></p>
-
-<ul>
-    <li>
-        <a href="/dashboard/events">Caută evenimente</a>
-    </li>
-
-    <li>
+    <div class="navbar-links">
+        <a href="/dashboard/events">Evenimente</a>
         <a href="/dashboard/my-tickets">Biletele mele</a>
-    </li>
 
-    <% if (role === "admin") { %>
-        <li>
+        <% if (role === "admin") { %>
             <a href="/dashboard/events/new">Adaugă eveniment</a>
-        </li>
-
-        <li>
             <a href="/dashboard/venues/new">Adaugă locație</a>
-        </li>
-    <% } %>
+        <% } %>
 
-    <li>
         <a href="/logout">Logout</a>
-    </li>
-</ul>
+    </div>
+</nav>
+
+<div class="page">
+    <div class="card">
+        <h1>Bun venit, <%= username %>!</h1>
+        <p>Rol cont: <%= role %></p>
+    </div>
+
+    <div class="dashboard-grid">
+
+        <a class="dashboard-link" href="/dashboard/events">
+            <h2>Caută evenimente</h2>
+            <p>Vezi concertele disponibile și cumpără bilete.</p>
+        </a>
+
+        <a class="dashboard-link" href="/dashboard/my-tickets">
+            <h2>Biletele mele</h2>
+            <p>Accesează biletele cumpărate de tine.</p>
+        </a>
+
+        <% if (role === "admin") { %>
+
+            <a class="dashboard-link" href="/dashboard/events/new">
+                <h2>Adaugă eveniment</h2>
+                <p>Creează un nou concert în platformă.</p>
+            </a>
+
+            <a class="dashboard-link" href="/dashboard/venues/new">
+                <h2>Adaugă locație</h2>
+                <p>Adaugă venue-uri pentru evenimente.</p>
+            </a>
+
+        <% } %>
+
+    </div>
+</div>
 
 </body>
 </html>

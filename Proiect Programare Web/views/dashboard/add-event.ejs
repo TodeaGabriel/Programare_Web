@@ -2,120 +2,89 @@
 <html>
 <head>
     <title>Adaugă eveniment</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
-<h1>Adaugă eveniment</h1>
+<nav class="navbar">
+    <div class="navbar-title">Event Tickets</div>
 
-<% if (venues.length === 0) { %>
+    <div class="navbar-links">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/dashboard/events">Evenimente</a>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
 
-    <p>Nu există locații. Adaugă mai întâi o locație.</p>
+<div class="form-card card">
+    <h1>Adaugă eveniment</h1>
 
-    <a href="/dashboard/venues/new">
-        Adaugă locație
-    </a>
+    <% if (venues.length === 0) { %>
 
-<% } else { %>
-
-    <form action="/dashboard/events" method="POST">
-
-        <label>Titlu eveniment</label>
+        <p>Nu există locații. Adaugă mai întâi o locație.</p>
         <br>
-        <input
-            type="text"
-            name="title"
-            placeholder="Concert Coldplay"
-            required
-        >
+        <a class="btn btn-primary" href="/dashboard/venues/new">
+            Adaugă locație
+        </a>
 
-        <br><br>
+    <% } else { %>
 
-        <label>Artist</label>
-        <br>
-        <input
-            type="text"
-            name="artist"
-            placeholder="Coldplay"
-            required
-        >
+        <form action="/dashboard/events" method="POST">
 
-        <br><br>
+            <div class="form-group">
+                <label>Titlu eveniment</label>
+                <input type="text" name="title" placeholder="Concert Coldplay" required>
+            </div>
 
-        <label>Descriere</label>
-        <br>
-        <textarea
-            name="description"
-            placeholder="Descriere eveniment"
-            required
-        ></textarea>
+            <div class="form-group">
+                <label>Artist</label>
+                <input type="text" name="artist" placeholder="Coldplay" required>
+            </div>
 
-        <br><br>
+            <div class="form-group">
+                <label>Descriere</label>
+                <textarea name="description" placeholder="Descriere eveniment" required></textarea>
+            </div>
 
-        <label>Dată</label>
-        <br>
-        <input
-            type="date"
-            name="date"
-            required
-        >
+            <div class="form-group">
+                <label>Dată</label>
+                <input type="date" name="date" required>
+            </div>
 
-        <br><br>
+            <div class="form-group">
+                <label>Locație</label>
+                <select name="venue" required>
+                    <% venues.forEach(venue => { %>
+                        <option value="<%= venue._id %>">
+                            <%= venue.name %> - <%= venue.location %>
+                        </option>
+                    <% }) %>
+                </select>
+            </div>
 
-        <label>Locație</label>
-        <br>
-        <select name="venue" required>
-            <% venues.forEach(venue => { %>
-                <option value="<%= venue._id %>">
-                    <%= venue.name %> - <%= venue.location %>
-                </option>
-            <% }) %>
-        </select>
+            <div class="form-group">
+                <label>Număr total bilete</label>
+                <input type="number" name="totalTickets" placeholder="1000" required>
+            </div>
 
-        <br><br>
+            <div class="form-group">
+                <label>Preț bilet</label>
+                <input type="number" name="ticketPrice" placeholder="250" required>
+            </div>
 
-        <label>Număr total bilete</label>
-        <br>
-        <input
-            type="number"
-            name="totalTickets"
-            placeholder="1000"
-            required
-        >
+            <div class="form-group">
+                <label>Imagine URL</label>
+                <input type="text" name="imageUrl" placeholder="https://...">
+            </div>
 
-        <br><br>
+            <button class="btn btn-primary" type="submit">
+                Salvează eveniment
+            </button>
 
-        <label>Preț bilet</label>
-        <br>
-        <input
-            type="number"
-            name="ticketPrice"
-            placeholder="250"
-            required
-        >
+        </form>
 
-        <br><br>
-
-        <label>Imagine URL</label>
-        <br>
-        <input
-            type="text"
-            name="imageUrl"
-            placeholder="https://..."
-        >
-
-        <br><br>
-
-        <button type="submit">
-            Salvează eveniment
-        </button>
-
-    </form>
-
-<% } %>
-
-<br>
-
-<a href="/dashboard">Înapoi la dashboard</a>
+    <% } %>
+</div>
 
 </body>
 </html>

@@ -2,86 +2,115 @@
 <html>
 <head>
     <title>Evenimente</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
-<h1>Evenimente disponibile</h1>
+<nav class="navbar">
+    <div class="navbar-title">Event Tickets</div>
 
-<a href="/dashboard">Înapoi la dashboard</a>
+    <div class="navbar-links">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/dashboard/my-tickets">Biletele mele</a>
 
-<br><br>
+        <% if (role === "admin") { %>
+            <a href="/dashboard/events/new">Adaugă eveniment</a>
+        <% } %>
 
-<form action="/dashboard/events" method="GET">
-    <input
-        type="text"
-        name="search"
-        placeholder="Caută după titlu sau artist"
-        value="<%= search %>"
-    >
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
 
-    <button type="submit">
-        Caută
-    </button>
-</form>
+<div class="page">
 
-<br>
+    <div class="card">
+        <h1>Evenimente disponibile</h1>
 
-<% if (role === "admin") { %>
-    <a href="/dashboard/events/new">Adaugă eveniment nou</a>
-<% } %>
+        <form class="search-bar" action="/dashboard/events" method="GET">
+            <input
+                type="text"
+                name="search"
+                placeholder="Caută după titlu sau artist"
+                value="<%= search %>"
+            >
 
-<hr>
+            <button class="btn btn-primary" type="submit">
+                Caută
+            </button>
+        </form>
+    </div>
 
-<% if (events.length === 0) { %>
+    <% if (events.length === 0) { %>
 
-    <p>Nu există evenimente momentan.</p>
-
-<% } else { %>
-
-    <% events.forEach(event => { %>
-
-        <div>
-            <h2><%= event.title %></h2>
-
-            <p>
-                Artist:
-                <%= event.artist %>
-            </p>
-
-            <p>
-                Locație:
-                <% if (event.venue) { %>
-                    <%= event.venue.name %>
-                <% } else { %>
-                    Locație necunoscută
-                <% } %>
-            </p>
-
-            <p>
-                Data:
-                <%= event.date.toLocaleDateString("ro-RO") %>
-            </p>
-
-            <p>
-                Preț:
-                <%= event.ticketPrice %> RON
-            </p>
-
-            <p>
-                Bilete disponibile:
-                <%= event.availableTickets %>
-            </p>
-
-            <a href="/dashboard/events/<%= event._id %>">
-                Vezi detalii
-            </a>
+        <div class="empty-message">
+            Nu există evenimente momentan.
         </div>
 
-        <hr>
+    <% } else { %>
 
-    <% }) %>
+        <div class="events-grid">
 
-<% } %>
+            <% events.forEach(event => { %>
+
+                <div class="event-card">
+
+                    <div class="event-image">
+                        <% if (event.imageUrl) { %>
+                            <img src="<%= event.imageUrl %>" alt="<%= event.title %>">
+                        <% } else { %>
+                            🎵
+                        <% } %>
+                    </div>
+
+                    <div class="event-content">
+                        <span class="badge">Concert</span>
+
+                        <h2><%= event.title %></h2>
+
+                        <p>
+                            <strong>Artist:</strong>
+                            <%= event.artist %>
+                        </p>
+
+                        <p>
+                            <strong>Locație:</strong>
+                            <% if (event.venue) { %>
+                                <%= event.venue.name %>
+                            <% } else { %>
+                                Locație necunoscută
+                            <% } %>
+                        </p>
+
+                        <p>
+                            <strong>Data:</strong>
+                            <%= event.date.toLocaleDateString("ro-RO") %>
+                        </p>
+
+                        <p>
+                            <strong>Preț:</strong>
+                            <%= event.ticketPrice %> RON
+                        </p>
+
+                        <p>
+                            <strong>Bilete:</strong>
+                            <%= event.availableTickets %>
+                        </p>
+
+                        <br>
+
+                        <a class="btn btn-primary" href="/dashboard/events/<%= event._id %>">
+                            Vezi detalii
+                        </a>
+                    </div>
+                </div>
+
+            <% }) %>
+
+        </div>
+
+    <% } %>
+
+</div>
 
 </body>
 </html>

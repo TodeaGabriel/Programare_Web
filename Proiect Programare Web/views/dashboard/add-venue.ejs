@@ -2,55 +2,83 @@
 <html>
 <head>
     <title>Adaugă locație</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
-<h1>Adaugă locație</h1>
+<nav class="navbar">
+    <div class="navbar-title">Event Tickets</div>
 
-<form action="/dashboard/venues" method="POST">
+    <div class="navbar-links">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/dashboard/events">Evenimente</a>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
 
-    <label>Nume locație</label>
-    <br>
-    <input
-        type="text"
-        name="name"
-        placeholder="BT Arena"
-        required
-    >
+<div class="form-card card">
+    <h1>Adaugă locație</h1>
 
-    <br><br>
+    <form action="/dashboard/venues" method="POST">
 
-    <label>Adresă / oraș</label>
-    <br>
-    <input
-        type="text"
-        name="location"
-        placeholder="Cluj-Napoca"
-        required
-    >
+        <div class="form-group">
+            <label>Nume locație</label>
+            <input
+                type="text"
+                name="name"
+                placeholder="BT Arena"
+                required
+            >
+        </div>
 
-    <br><br>
+        <div class="form-group">
+            <label>Adresă / oraș</label>
+            <input
+                type="text"
+                name="location"
+                placeholder="Cluj-Napoca, România"
+                required
+            >
+        </div>
 
-    <label>Capacitate</label>
-    <br>
-    <input
-        type="number"
-        name="capacity"
-        placeholder="10000"
-        required
-    >
+        <div class="form-group">
+            <label>Capacitate</label>
+            <input
+                type="number"
+                name="capacity"
+                placeholder="10000"
+                required
+            >
+        </div>
 
-    <br><br>
+        <div class="form-group">
+            <label>Latitudine</label>
+            <input
+                type="number"
+                step="any"
+                name="latitude"
+                placeholder="46.7666"
+                required
+            >
+        </div>
 
-    <button type="submit">
-        Salvează locația
-    </button>
+        <div class="form-group">
+            <label>Longitudine</label>
+            <input
+                type="number"
+                step="any"
+                name="longitude"
+                placeholder="23.5729"
+                required
+            >
+        </div>
 
-</form>
+        <button class="btn btn-primary" type="submit">
+            Salvează locația
+        </button>
 
-<br>
-
-<a href="/dashboard">Înapoi la dashboard</a>
+    </form>
+</div>
 
 </body>
 </html>

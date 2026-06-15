@@ -110,12 +110,20 @@ router.get("/venues/new", requireAdmin, (req, res) => {
 // Doar admin
 router.post("/venues", requireAdmin, async (req, res) => {
     try {
-        const { name, location, capacity } = req.body;
+        const {
+            name,
+            location,
+            capacity,
+            latitude,
+            longitude
+        } = req.body;
 
         await Venue.create({
             name,
             location,
-            capacity
+            capacity,
+            latitude,
+            longitude
         });
 
         res.redirect("/dashboard/events/new");
