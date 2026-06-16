@@ -103,20 +103,25 @@
 
 <% if (event.venue && event.venue.latitude && event.venue.longitude) { %>
     <script>
-        const latitude = <%= event.venue.latitude %>;
-        const longitude = <%= event.venue.longitude %>;
+        (() => {
+            const venueLatitude = <%= event.venue.latitude %>;
+            const venueLongitude = <%= event.venue.longitude %>;
 
-        const map = L.map("map").setView([latitude, longitude], 15);
+            const venueMap = L.map("map").setView(
+                [venueLatitude, venueLongitude],
+                15
+            );
 
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-            maxZoom: 19,
-            attribution: "© OpenStreetMap"
-        }).addTo(map);
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                maxZoom: 19,
+                attribution: "© OpenStreetMap"
+            }).addTo(venueMap);
 
-        L.marker([latitude, longitude])
-            .addTo(map)
-            .bindPopup("<%= event.venue.name %><br><%= event.venue.location %>")
-            .openPopup();
+            L.marker([venueLatitude, venueLongitude])
+                .addTo(venueMap)
+                .bindPopup("<%= event.venue.name %><br><%= event.venue.location %>")
+                .openPopup();
+        })();
     </script>
 <% } %>
 
